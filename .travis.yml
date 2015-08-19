@@ -51,18 +51,20 @@ before_install:
   # - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
   # - $CC --version
   # - ls /usr/bin/gcc*
-  - export CXX="g++-4.8" CC="gcc-4.8"
+  # - export CXX="g++-4.8" CC="gcc-4.8"
   # - $CC --version
+  - unset CXX
+  - unset CC
 install: travis_wait
 script:
-  - ./build.sh
+  - CXX="g++-4.8" CC="gcc-4.8" ./build.sh
   - ls $RISCV
   - ls $RISCV/bin
   - ls $RISCV/riscv64-unknown-elf
-  - cd riscv-pk
-  - mkdir build
-  - cd build
-  - CC=riscv64-unknown-elf-gcc CXX=riscv64-unknown-elf-g++ ../configure --prefix=$RISCV/riscv64-unknown-elf --host=riscv64-unknown-elf
-  - cat config.log
-  - make
-  - make install
+  # - cd riscv-pk
+  # - mkdir build
+  # - cd build
+  # - CC=riscv64-unknown-elf-gcc CXX=riscv64-unknown-elf-g++ ../configure --prefix=$RISCV/riscv64-unknown-elf --host=riscv64-unknown-elf
+  # - cat config.log
+  # - make
+  # - make install
