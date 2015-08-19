@@ -10,8 +10,8 @@ env:
   global:
     # required packages to install
     - RISCV="/home/travis/riscv_install"
-# git:
-#       submodules: false # we'll do git submodule update ourselves
+git:
+      submodules: false # we'll do git submodule update ourselves
 before_install:
   - pwd
   - mkdir ~/riscv_install
@@ -28,6 +28,8 @@ before_install:
   # - sudo apt-get install -qq ${PKGS}
   # - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; fi
   # - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+  - $CC --version
+  - ls /usr/bin/gcc*
   - export CXX="g++-4.8" CC="gcc-4.8"
   - $CC --version
 install: travis_wait
