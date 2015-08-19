@@ -4,7 +4,7 @@ compiler:
 cache: apt
 # run on new infra
 sudo: false
-addons: {apt: {packages: gperf autoconf automake autotools-dev libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo } }
+addons: {apt: {packages: gperf autoconf automake autotools-dev libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo g++-4.8} }
 
 env:
   global:
@@ -13,7 +13,6 @@ env:
 git:
       submodules: false # we'll do git submodule update ourselves
 before_install:
-  - gcc --version
   - pwd
   - mkdir ~/riscv_install
     # fix urls to be https to avoid pubkey issues
@@ -29,5 +28,6 @@ before_install:
   # - sudo apt-get install -qq ${PKGS}
   # - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; fi
   # - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+  - export CXX="g++-4.8" CC="gcc-4.8"
 install: travis_wait
 script: "./build.sh"
