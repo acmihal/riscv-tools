@@ -10,17 +10,17 @@ env:
   global:
     # required packages to install
     - RISCV="/home/travis/riscv_install"
-git:
-      submodules: false # we'll do git submodule update ourselves
+# git:
+#       submodules: false # we'll do git submodule update ourselves
 before_install:
   - pwd
   - mkdir ~/riscv_install
     # fix urls to be https to avoid pubkey issues
-  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
-  - git submodule update --init
+  # - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  # - git submodule update --init
     # hack to deal with sub-sub module git -> https url
-  - cd riscv-tests && sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules && git submodule update --init && cd ..
-  - cd riscv-llvm && sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules && git submodule update --init && cd ..
+  # - cd riscv-tests && sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules && git submodule update --init && cd ..
+  # - cd riscv-llvm && sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules && git submodule update --init && cd ..
     # set jobs to 1 to avoid running out of memory on the travis machine
   - sed -i.bak 's/JOBS=16/JOBS=4/' build.common
   # - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
@@ -29,5 +29,6 @@ before_install:
   # - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; fi
   # - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
   - export CXX="g++-4.8" CC="gcc-4.8"
+  - $CC --version
 install: travis_wait
 script: "./build.sh"
