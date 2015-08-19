@@ -28,11 +28,14 @@ env:
   global:
     # required packages to install
     - RISCV="/home/travis/riscv_install"
+    - PATH="$PATH:$RISCV/bin"
 # git:
 #       submodules: false # we'll do git submodule update ourselves
 before_install:
   - pwd
   - mkdir -p $RISCV
+  - echo $RISCV
+  - echo $PATH
     # fix urls to be https to avoid pubkey issues
   # - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
   # - git submodule update --init
