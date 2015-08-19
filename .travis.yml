@@ -32,7 +32,7 @@ env:
 #       submodules: false # we'll do git submodule update ourselves
 before_install:
   - pwd
-  - mkdir ~/riscv_install
+  - mkdir -p $RISCV
     # fix urls to be https to avoid pubkey issues
   # - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
   # - git submodule update --init
