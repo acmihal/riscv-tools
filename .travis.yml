@@ -63,5 +63,6 @@ script:
   - mkdir build
   - cd build
   - ../configure --prefix=$RISCV/riscv64-unknown-elf --host=riscv64-unknown-elf
+  - cat config.log
   - make
   - make install
