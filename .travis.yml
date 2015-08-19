@@ -57,6 +57,7 @@ install: travis_wait
 script:
   - ./build.sh
   - ls $RISCV
+  - ls $RISCV/bin
   - ls $RISCV/riscv64-unknown-elf
   - cd riscv-pk
   - mkdir build
