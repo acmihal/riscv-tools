@@ -40,7 +40,7 @@ before_install:
   # - cd riscv-tests && sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules && git submodule update --init && cd ..
   # - cd riscv-llvm && sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules && git submodule update --init && cd ..
     # set jobs to 1 to avoid running out of memory on the travis machine
-  # - sed -i.bak 's/JOBS=16/JOBS=4/' build.common
+  - sed -i.bak 's/JOBS=16/JOBS=6/' build.common
   # - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   # - sudo apt-get update -qq
   # - sudo apt-get install -qq ${PKGS}
@@ -51,4 +51,7 @@ before_install:
   - export CXX="g++-4.8" CC="gcc-4.8"
   # - $CC --version
 install: travis_wait
-script: "./build.sh"
+script:
+  - ./build.sh
+  - ls $RISCV
+  - ls $RISCV/riscv64-unknown-elf
