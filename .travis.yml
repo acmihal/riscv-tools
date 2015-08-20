@@ -36,6 +36,10 @@ before_install:
   - mkdir -p $RISCV
   - echo $RISCV
   - echo $PATH
+  - unset CC
+  - unset CXX
+  - alias gcc=gcc-4.8
+  - alias g++=g++-4.8
     # fix urls to be https to avoid pubkey issues
   # - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
   # - git submodule update --init
@@ -43,9 +47,9 @@ before_install:
   # - cd riscv-tests && sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules && git submodule update --init && cd ..
   # - cd riscv-llvm && sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules && git submodule update --init && cd ..
     # set jobs to 1 to avoid running out of memory on the travis machine
-  - sed -i.bak 's/JOBS=16/JOBS=6/' build.common
+  - sed -i.bak 's/JOBS=16/JOBS=8/' build.common
   # need to build pk with riscv-gcc
-  - sed -i.bak 's/build_project riscv-pk/CC=riscv64-unknown-elf-gcc CXX=riscv64-unknown-elf-g++ build_project riscv-pk/' build.sh
+  # - sed -i.bak 's/build_project riscv-pk/CC=riscv64-unknown-elf-gcc CXX=riscv64-unknown-elf-g++ build_project riscv-pk/' build.sh
   # - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   # - sudo apt-get update -qq
   # - sudo apt-get install -qq ${PKGS}
@@ -53,11 +57,12 @@ before_install:
   # - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
   # - $CC --version
   # - ls /usr/bin/gcc*
-  - export CXX="g++-4.8" CC="gcc-4.8"
+  # - export CXX="g++-4.8" CC="gcc-4.8"
   # - $CC --version
+  - gcc --version
 install: travis_wait
 script:
-  - cat build.sh
+  # - cat build.sh
   - ./build.sh
   # - ls $RISCV
   # - ls $RISCV/bin
