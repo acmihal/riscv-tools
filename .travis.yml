@@ -51,7 +51,7 @@ before_install:
   # - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
   # - $CC --version
   # - ls /usr/bin/gcc*
-  # - export CXX="g++-4.8" CC="gcc-4.8"
+  - export CXX="g++-4.8" CC="gcc-4.8"
   # - $CC --version
 install: travis_wait
 script:
