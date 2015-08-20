@@ -49,6 +49,7 @@ before_install:
     # set jobs to 1 to avoid running out of memory on the travis machine
   - sed -i.bak 's/JOBS=16/JOBS=8/' build.common
   # need to build pk with riscv-gcc
+  - sed -i.back '13 i\unset CC CXX' build.sh
   # - sed -i.bak 's/riscv-pk/riscv-pk CC=riscv64-unknown-elf-gcc CXX=riscv64-unknown-elf-g++/' build.sh
   # - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   # - sudo apt-get update -qq
@@ -58,6 +59,7 @@ before_install:
   # - $CC --version
   # - ls /usr/bin/gcc*
   - export CXX="g++-4.8" CC="gcc-4.8"
+  - git submodule update --init riscv-tests/env
   # - $CC --version
   # - gcc --version
 install: travis_wait
