@@ -42,7 +42,4 @@ before_install:
   # riscv-pk needs CC & CXX unset to use riscv-gcc
   - sed -i.back '13 i\unset CC CXX' build.sh
 
-# extra time duing long builds
-install: travis_wait
-
 script: ./build.sh
