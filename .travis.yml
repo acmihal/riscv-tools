@@ -42,4 +42,4 @@ before_install:
 # extra time duing long builds
 install: travis_wait
 
-script: ./build.sh
+script: ./regression.sh
