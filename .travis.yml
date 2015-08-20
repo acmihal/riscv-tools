@@ -59,7 +59,9 @@ before_install:
   # - $CC --version
   # - ls /usr/bin/gcc*
   - export CXX="g++-4.8" CC="gcc-4.8"
-  - git submodule update --init riscv-tests/env
+  - cd riscv-tests
+  - git submodule update --init
+  - cd ..
   # - $CC --version
   # - gcc --version
 install: travis_wait
