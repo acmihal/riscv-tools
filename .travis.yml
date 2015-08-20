@@ -53,11 +53,9 @@ before_install:
   # - ls /usr/bin/gcc*
   # - export CXX="g++-4.8" CC="gcc-4.8"
   # - $CC --version
-  - unset CXX
-  - unset CC
 install: travis_wait
 script:
-  - CXX="g++-4.8" CC="gcc-4.8" ./build.sh
+  - ./build.sh
   - ls $RISCV
   - ls $RISCV/bin
   - ls $RISCV/riscv64-unknown-elf
