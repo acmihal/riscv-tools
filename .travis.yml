@@ -59,10 +59,11 @@ script:
   - ls $RISCV
   - ls $RISCV/bin
   - ls $RISCV/riscv64-unknown-elf
-  # - cd riscv-pk
-  # - mkdir build
-  # - cd build
+  - cd riscv-pk
+  - mkdir build
+  - cd build
   # - CC=riscv64-unknown-elf-gcc CXX=riscv64-unknown-elf-g++ ../configure --prefix=$RISCV/riscv64-unknown-elf --host=riscv64-unknown-elf
-  # - cat config.log
-  # - make
-  # - make install
+  - ../configure --prefix=$RISCV/riscv64-unknown-elf --build=riscv64-unknown-elf
+  - cat config.log
+  - make
+  - make install
