@@ -45,5 +45,5 @@ install: travis_wait
 
 script:
   - cd riscv-gnu-toolchain
-  - ./configure --prefix=$RISCV
+  - CC= CXX= ./configure --prefix=$RISCV
   - time make -j 4 linux
