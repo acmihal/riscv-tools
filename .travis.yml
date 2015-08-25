@@ -46,4 +46,8 @@ install: travis_wait
 script:
   - cd riscv-gnu-toolchain
   - CC= CXX= ./configure --prefix=$RISCV
-  - CC= CXX= make -j 4 linux
+  - CC= CXX= make -j 4 linux > build.gcc-linux.out
+
+after_failure:
+  - echo 'Building riscv-gcc-linux failed!'
+  - tail -n 1500 build.gcc-linux.out
