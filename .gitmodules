@@ -19,3 +19,6 @@
 [submodule "riscv-gnu-toolchain"]
 	path = riscv-gnu-toolchain
 	url = https://github.com/acmihal/riscv-gnu-toolchain.git
+[submodule "riscv-xcam"]
+	path = riscv-xcam
+	url = https://github.com/acmihal/riscv-xcam.git

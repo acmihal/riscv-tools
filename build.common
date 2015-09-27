@@ -17,6 +17,13 @@ PATH="$RISCV/bin:$PATH"
 
 set -e
 
+function build_buildsh {
+  cd $1
+  echo "Building project $1"
+  ./build.sh
+  cd - > /dev/null
+}
+
 function build_project {
   echo
   if [ -e "$1/build" ]
